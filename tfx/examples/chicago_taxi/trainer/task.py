@@ -21,8 +21,10 @@ import os
 
 import tensorflow as tf
 import tensorflow_model_analysis as tfma
-from tfx.examples.chicago_taxi.trainer import model
-from tfx.examples.chicago_taxi.trainer import taxi
+#from tfx.examples.chicago_taxi.trainer import model
+#from tfx.examples.chicago_taxi.trainer import taxi
+import model
+import taxi
 
 SERVING_MODEL_DIR = 'serving_model_dir'
 EVAL_MODEL_DIR = 'eval_model_dir'
@@ -78,6 +80,9 @@ def train_and_maybe_evaluate(hparams):
   serving_model_dir = os.path.join(hparams.output_dir, SERVING_MODEL_DIR)
   run_config = run_config.replace(model_dir=serving_model_dir)
 
+  print("-"*50)
+  print("Building Estimator")
+  print("-"*50)
   estimator = model.build_estimator(
       hparams.tf_transform_dir,
 
@@ -87,6 +92,11 @@ def train_and_maybe_evaluate(hparams):
           for i in range(NUM_DNN_LAYERS)
       ],
       config=run_config)
+  print("-"*50)
+  print("Built")
+  print(estimator)
+  print("-"*50)
+
 
   tf.estimator.train_and_evaluate(estimator, train_spec, eval_spec)
 

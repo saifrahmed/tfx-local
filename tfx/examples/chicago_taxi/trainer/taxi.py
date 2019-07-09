@@ -55,7 +55,8 @@ VOCAB_FEATURE_KEYS = [
     'company',
 ]
 
-LABEL_KEY = 'tips'
+#LABEL_KEY = 'tips'
+LABEL_KEY = 'fare'
 FARE_KEY = 'fare'
 
 CSV_COLUMN_NAMES = [

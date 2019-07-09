@@ -67,12 +67,16 @@ def build_estimator(tf_transform_dir, config, hidden_units=None):
           taxi.transformed_names(taxi.CATEGORICAL_FEATURE_KEYS),  #
           taxi.MAX_CATEGORICAL_FEATURE_VALUES)
   ]
-  return tf.estimator.DNNLinearCombinedClassifier(
+  #myModel = tf.estimator.DNNLinearCombinedClassifier(
+  myModel = tf.estimator.DNNLinearCombinedRegressor(
       config=config,
       linear_feature_columns=categorical_columns,
       dnn_feature_columns=real_valued_columns,
       dnn_hidden_units=hidden_units or [100, 70, 50, 25])
-
+  print("-"*50)
+  print(myModel)
+  print("-"*50)
+  return myModel
 
 def example_serving_receiver_fn(tf_transform_dir, schema):
   """Build the serving in inputs.
