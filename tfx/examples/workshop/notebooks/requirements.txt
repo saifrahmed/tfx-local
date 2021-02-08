@@ -42,7 +42,7 @@ grpc-google-iam-v1==0.11.4
 grpcio==1.18.0
 h5py==2.9.0
 hdfs==2.2.2
-httplib2==0.11.3
+httplib2==0.19.0
 idna==2.8
 ipaddress==1.0.22
 ipykernel==4.10.0
